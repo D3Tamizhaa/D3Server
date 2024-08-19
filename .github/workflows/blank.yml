@@ -1,0 +1,22 @@
+sudo apt update
+sudo apt upgrade -y
+
+sudo apt install git -y
+
+sudo adduser --disabled-password git
+
+ssh-keygen -t rsa -b 4096 -C "d3tamizha@gmail.com"
+
+ssh-copy-id git@your_server_ip
+
+sudo su - git
+
+mkdir -p ~/repositories
+
+mkdir ~/repositories/my_project.git
+cd ~/repositories/my_project.git
+git init --bare
+
+sudo chown -R git:git ~/repositories/my_project.git
+
+git clone git@your_server_ip:repositories/my_project.git
